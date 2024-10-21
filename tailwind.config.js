@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const { Mode } = require('@mui/icons-material');
-const { theme } = require('@mui/material/styles');
-// import { Theme } from 'tailwindcss/types/config';
+// const { theme } = require('@mui/material/styles');
 
 module.exports = {
+  // purge: [],
+	// presets: [],
+	// darkMode: false, // or 'media' or 'class'
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",    
   ], 
   theme: {
 	// extend: {
@@ -369,7 +370,7 @@ module.exports = {
 		}
 	},
 	
-	// backgroundColor: ( theme : Theme) => theme('colors'),
+	backgroundColor: theme => theme('colors'),
 	backgroundImage: {
 		none: 'none',
 		'gradient-to-t': 'linear-gradient(to top, var(--gradient-color-stops))',
