@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const { Mode } = require('@mui/icons-material');
-const { theme } = require('@mui/material/styles');
+// const { Mode } = require('@mui/icons-material');
+// const { theme } = require('@mui/material/styles');
 // import { Theme } from 'tailwindcss/types/config';
 
 module.exports = {
@@ -9,12 +9,16 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ], 
   theme: {
-	// extend: {
-	// 	colors: {
-	// 	  primary: theme.palette.primary.main,
-	// 	  secondary: theme.palette.secondary.main,
-	// 	},
-	//   },
+	extend: {
+		
+		spacing: {
+			'76': '4.5rem', // Adjust this to the value you want for h-76
+		  },
+		// colors: {
+		//   primary: theme.palette.primary.main,
+		//   secondary: theme.palette.secondary.main,
+		// },
+	  },
 	screens: {
 		sm: '600px',
 		md: '960px',

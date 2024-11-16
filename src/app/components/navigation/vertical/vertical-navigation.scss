@@ -1,14 +1,75 @@
-// .vertical-navigation{
-//       display: flex;
-//       flex-direction: column;
-//       flex: 1 0 auto;
-//       top: 0;
-//       width: 280px;
-//       min-width: 280px;
-//       max-width: 280px;
-//       height: 100vh;
-//       min-height: 100vh;
-//       max-height: 100vh;
-//       z-index: 200;
-//   }
+@import url('../../../globals.css');
+.navigation {
+    --nav-link-color:rgba(224, 224, 224, 0.7);;
+    --nav-link-hover-bg-color: rgba(255, 255, 255, 0.05);
+    --nav-link-hover-color: #e0e0e0;
+    &-vertical { 
+        .nav-header {
+            @apply flex flex-1 shrink-0 flex-row items-center h-76 px-3;
+          
+        } 
+        .logo-content {
+            @apply flex flex-1 items-center space-x-2 px-2.5;
+
+            .logo-text {
+                @apply flex flex-col flex-auto;
+
+                &-primary{
+                    @apply text-lg font-semibold leading-none;
+                }
+                &-secondary {
+                    @apply text-[13.6px] font-semibold leading-none;
+                    color: #82d7f7;
+                }
+            }
+        }
+        .menu-icon {
+            color: inherit;
+        }
+        .nav {
+            &-list-sub-header {
+                @apply flex items-center cursor-default flex-1;
+                line-height: 1;
+            }
+            &-list-sub-header-text {
+                @apply flex-1 items-center;          
+                
+
+                .--primary {
+                    @apply uppercase text-xs;
+                    color: var(--color-primary);
+                    font-weight: 600;
+                    letter-spacing: 0.05em;
+                    line-height: 20px;
+                }
+                
+                .--secondary {
+                    font-size: 11px;
+                    color: rgb(149, 156, 169);
+                    letter-spacing: 0.06px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                }
+            }           
+            
+            &-link {
+                color: var(--nav-link-color);
+                @apply flex items-center px-[16px] py-[10px] mb-1 text-xs;
+
+                &:hover {
+                    @apply rounded-lg;
+                    background-color: var(--nav-link-hover-bg-color);
+                    color: var(--nav-link-hover-color)
+                }
+            }           
+            &-icon{
+                @apply shrink-0 fill-current mr-4;
+                color: inherit;
+                &.--right{
+                    @apply m-0;
+                }
+            }
+        }
+    }
+}
 

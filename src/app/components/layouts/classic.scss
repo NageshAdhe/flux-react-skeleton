@@ -1,72 +1,79 @@
 @import url('../../globals.css');
-$sidebar-width: 250px;
-$sidebar-bg-color: #2c3e50;
-$link-color: #ecf0f1;
-$link-hover-color: #1abc9c;
-$transition-duration: 0.3s;
-$content-padding: 20px;
+:root {
+  /* variables for classic theme */
+  --sidebar-width: 280px;
+  --sidebar-bg-color: #121212;
+  --toolbar-min-height: 64px;
+  --toobar-bg-color:#f5f5f5;
+  --toolbar-color:rgba(0, 0, 0, 0.87);
+  --content-bg-color: #e8e8e8;
+}
+.header{
+  border-color: rgba(214, 214, 214, 0.7);
+}
+.navigation {
+  --link-color:#e0e0e0;
+  --link-hover-color: #1abc9c;
+  &-vertical {    
+    @apply sticky top-0 z-20 shrink-0;
+    width: var(--sidebar-width);
+    height: var(--min-height-body);
+    background-color: var(--sidebar-bg-color);
+    color: var(--link-color);
+  }
+}
+.main-content {
+  @apply relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden;
+  width: calc(100% - #{var(--sidebar-width)}); 
+  height: var(--min-height-body);;
+  overflow-y: var(--overflow-y-body); 
 
-.vertical-nav {
-  width: $sidebar-width;
-  height: 100vh;
-  background-color: $sidebar-bg-color;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
+  .content {
+    @apply container mx-auto relative flex flex-auto flex-col;
+    padding-left: var(--padding-body);
+    padding-right: var(--padding-body);
+    background-color: var(--content-bg-color);
+  }
+  .toolbar{
+    @apply flex flex-row items-center p-0;
+    width: 100%;
+    min-height: var(--toolbar-min-height);
+    background-color: var(--toobar-bg-color);
+    color: var(--toolbar-color);
+  }
+  .breadcrumb{
+    align-items: center;
+  }
+  .setting-panel{
+    position: fixed;
+    right: 0px;
+    top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 8px;
+    border-radius: 6px 0px 0px 6px;
+    z-index: 999;
+    color: rgb(255, 255, 255);
+    background-color: rgb(239, 83, 80);
+  }
+}
+.footer{
+  position: sticky;
+  bottom: 0px;
+  right: 0px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  // width: calc(100% - #{var(--sidebar-width)});
+  background-color: rgb(18, 18, 18);
+  color: var(--link-color); 
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
 
-    li {
-      margin-bottom: 15px;
 
-      .nav-link {
-        color: $link-color;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        transition: color $transition-duration ease;
-
-        &--active {
-          color: $link-hover-color;
-          font-weight: bold;
-        }
-
-        &:hover {
-          color: $link-hover-color;
-        }
-      }
-    }
-  }
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-color: rgba(214, 214, 214, 0.7);
 }
-
-.layout{
-.classic{
-
-    }
-}
-
-.main-content {
-    margin-left: $sidebar-width; // Offset by the sidebar width
-    padding: $content-padding;
-    width: calc(100% - #{$sidebar-width}); // Adjust width to account for the sidebar
-    height: 100vh;
-    overflow-y: auto; // Allow vertical scrolling if content exceeds the viewport height
-  
-    .content-header {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-  
-    .content-body {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-  }

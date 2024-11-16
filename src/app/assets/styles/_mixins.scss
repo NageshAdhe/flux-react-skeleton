@@ -1,0 +1,5 @@
+@mixin responsive-padding($padding) {
+    padding: $padding;
+    @media (min-width: 768px) { padding: $padding * 1.5; }
+    @media (min-width: 1024px) { padding: $padding * 2; }
+  }

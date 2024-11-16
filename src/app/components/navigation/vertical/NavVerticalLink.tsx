@@ -40,28 +40,21 @@ const NavVerticalLink: React.FC<NavVerticalLinkProps> = (props) => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const { item, nestedLevel } = props;
   
- 
   return (
-    <ListItem
-      component="a"
-      href={item.url}
-      target={item.target || '_blank'}
-      className={clsx('Vertical-link', 'list-item')}     
-      role="button"
-    >
+    <a className={clsx('nav-link')}     
+      role="button">
       {item.icon && (
-        <Icon className="list-item-icon text-16 flex-shrink-0" color="action">
+        <Icon fontSize="small" className="nav-icon" color="action">
           {item.icon}
         </Icon>
       )}
-
       <ListItemText
-        className="list-item-text"
+        disableTypography
+        className="nav-link-text"
         primary={item.title}
-        classes={{ primary: 'text-14 list-item-text-primary' }}
-      />Vertical Link
+      />
     
-    </ListItem>
+    </a>
   );
 };
 

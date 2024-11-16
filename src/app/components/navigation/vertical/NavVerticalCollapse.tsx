@@ -74,31 +74,32 @@ const FuseNavVerticalCollapse: React.FC<NavVerticalCollapsePropsRouterProps> = (
   return (
     <ul className={clsx(open && 'open')}>
       <ListItem
-        className={clsx("classes.item", 'list-item')}
+        className="nav-link"
         onClick={handleClick}
         role="button"
       >
         {item.icon && (
-          <Icon color="action" className="list-item-icon text-16 flex-shrink-0">
+          <Icon color="action" className="nav-icon">
             {item.icon}
           </Icon>
         )}
-        <ListItemText className="list-item-text" primary={item.title} classes={{ primary: 'text-14' }} />
-        <IconButton
+        <ListItemText disableTypography className="nav-link-text " primary={item.title} classes={{ primary: 'text-xs' }} />
+        {/* <IconButton
           disableRipple
-          className="w-40 h-40 -mx-12 p-0 focus:bg-transparent hover:bg-transparent"
+          className="nav-icon p-0"
           onClick={(ev) => ev.preventDefault()}
-        >
-          <Icon className="text-16 arrow-icon" color="inherit">
+        > */}
+          
+          <Icon fontSize="small" className="nav-icon --right" color="action" onClick={(ev) => ev.preventDefault()}> 
             {open ? 'expand_less' : 'expand_more'}
           </Icon>
-        </IconButton>
+        {/* </IconButton> */}
       </ListItem>
 
       {item.children && (
         <Collapse in={open} className="collapse-children">
-          {item.children.map((_item) => (
-            <NavItem key={_item.id} type={`vertical-${_item.type}`} item={_item} nestedLevel={nestedLevel + 1} />
+          {item.children.map((_item,index) => (
+            <NavItem index={index} key={_item.id} type={`vertical-${_item.type}`} item={_item} nestedLevel={nestedLevel + 1} />
           ))}
         </Collapse>
       )}

@@ -11,7 +11,7 @@ import EmptyLayout from './components/layouts/empty';
 import DenseLayout from './components/layouts/dense';
 import ClassicLayout from './components/layouts/classic';
 import EnterPriseLayout from './components/layouts/enterprise';
-import '../app/assets/styles/layout.scss';
+// import '../app/assets/styles/layout.scss';
 
 
 export default function RootLayout({
@@ -39,7 +39,7 @@ let LayoutComponent = EmptyLayout;
       break;
     }
     default: { 
-      LayoutComponent = EmptyLayout;
+      LayoutComponent = ClassicLayout;
       break;
    } 
   }
@@ -47,19 +47,30 @@ let LayoutComponent = EmptyLayout;
 
   return (
     <html lang="en">
+      <head>
+      <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+<link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+
+      </head>
       <StyledJsxRegistry>
-      <body className='light theme-default'>
-              <button onClick={() => switchLayout('empty')}>empty Layout</button>
+      <body className='light'>
+              {/* <button onClick={() => switchLayout('empty')}>empty Layout</button>
               <button onClick={() => switchLayout('dense')}>dense Layout</button>
               <button onClick={() => switchLayout('classic')}>clssic Layout</button>
-              <button onClick={() => switchLayout('enterprise')}>enterprise Layout</button>     
+              <button onClick={() => switchLayout('enterprise')}>enterprise Layout</button>      */}
               <AppRouterCacheProvider options={{ key: 'css' }}>
                 <ThemeProvider theme={theme}>
-                  <div className='splash-screen'></div>
+                  {/* <div className='splash-screen'></div> */}
                   <div className='app-root'>  
-                    <div className="layout">                  
+                    {/* <div className="layout">                   */}
                     <LayoutComponent>{children}</LayoutComponent>
-                    </div>            
+                    {/* </div>             */}
                   </div>            
                 </ThemeProvider>
                 </AppRouterCacheProvider>

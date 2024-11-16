@@ -13,14 +13,14 @@ const NavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(
     ({ children, activeClassName = 'active', className, ...props }, ref) => {
         const { asPath } = useRouter();
         const isActive = asPath === props.href || asPath === props.as;
-
+        console.log("Childrens",children);
         return (
             <Link {...props} legacyBehavior>
                 <a
                     ref={ref}
                     className={clsx(className, { [activeClassName]: isActive })}
                 >
-                    {children}
+                    {children} test
                 </a>
             </Link>
         );

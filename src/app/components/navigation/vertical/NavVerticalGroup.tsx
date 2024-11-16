@@ -11,13 +11,14 @@ interface FuseNavVerticalGroupProps {
     title: string;
     url?: string;
     auth?: string[];
-    children?: any[];
+    children?: any[];	
   };
+  index?:number;
   nestedLevel: number;
 }
 
 const NavVerticalGroup: React.FC<FuseNavVerticalGroupProps> = (props) => {
-  const { item, nestedLevel } = props;
+  const { item, nestedLevel,index} = props;
   const theme = useTheme();
 	const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   
@@ -25,17 +26,23 @@ const NavVerticalGroup: React.FC<FuseNavVerticalGroupProps> = (props) => {
    <>
    <ListSubheader
 				disableSticky
-				className={clsx('list-subheader flex items-center', !item.url && 'cursor-default')}				
+				// className={clsx('nav-list-sub-header', !item.url && 'cursor-default flex-1', index!=0 && 'my-3')}
+				className={clsx('nav-list-sub-header', index!=0 && 'my-3')}
 				component={item.url ? NavLinkAdapter : 'li'}			
 				role="button"
 			>
-				<span className="list-subheader-text uppercase text-12">{item.title}</span>
+				<div className="nav-list-sub-header-text">
+				<span className="--primary">{item.title}</span>
+				<p className="--secondary">Custom made application designs</p>
+				</div>
+				
 			</ListSubheader>
 			{item.children && (
 				<>
-					{item.children.map(_item => (
+					{item.children.map((_item,index) => (
             <>            
 						<NavItem
+						    index={index}
 							key={_item.id}
 							type={`vertical-${_item.type}`}
 							item={_item}

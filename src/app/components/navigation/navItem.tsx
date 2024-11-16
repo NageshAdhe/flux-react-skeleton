@@ -13,6 +13,7 @@ export function registerComponent(name: string, Component: ComponentType): void 
 }
 
 interface NavItemProps {
+    index:number,
     type: string;
     [key: string]: any; // Allow any additional props
 }

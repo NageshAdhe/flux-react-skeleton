@@ -33,24 +33,23 @@ interface NavVerticalItemProps {
 
 const NavVerticalItem: React.FC<NavVerticalItemProps> = (props) => {
 
-  
   const { item, nestedLevel } = props;
 
 
   return (
     <ListItem
-      className={clsx('test', 'list-item')}
+      className={clsx('nav-link-title')}
     >
       {item.icon && (
-        <Icon className="list-item-icon text-16 flex-shrink-0" color="action">
+        <Icon className="nav-link-icon text-lg flex-shrink-0" color="action">
           {item.icon}
         </Icon>
       )}
 
       <ListItemText
-        className="list-item-text"
+        className="list-link-title-text"
         primary={item.title}
-        classes={{ primary: 'text-14 list-item-text-primary' }}
+        classes={{ primary: 'text-xs list-item-text-primary' }}
       />Vertical Item
     </ListItem>
   );
