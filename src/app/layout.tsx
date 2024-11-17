@@ -61,7 +61,6 @@ export default function RootLayout({
       </head>
       <StyledJsxRegistry>
         <body className="light" data-theme="rose">
-        <div className="button">Test Button</div>
           <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
               <div className="app-root">
