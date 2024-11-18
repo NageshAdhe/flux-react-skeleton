@@ -3,8 +3,7 @@
 import StyledJsxRegistry from "./registry";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import theme from "./core/Theme/fluxTheme";
+import theme from "./components/theme/fluxTheme";
 
 import { useState } from "react";
 import EmptyLayout from "./components/layouts/empty";
@@ -41,7 +40,7 @@ export default function RootLayout({
       break;
     }
     default: {
-      LayoutComponent = ClassicLayout;
+      LayoutComponent = EmptyLayout;
       break;
     }
   }

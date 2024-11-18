@@ -11,7 +11,7 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
       translate: "ANALYTICS",
       type: "link",
       icon: "link",
-      url: "/analytics",
+      url: "/admin/analytics",
     },
     {
       id: "applications",
@@ -26,7 +26,7 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
           translate: "ACADEMY",
           type: "link",
           icon: "whatshot",
-          url: "/academy",
+          url: "/admin/academy",
         },
         {
           id: "messenger",
