@@ -5,11 +5,14 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./components/theme/fluxTheme";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmptyLayout from "./components/layouts/empty";
+import SiteLayout from "./components/layouts/site";
 import DenseLayout from "./components/layouts/dense";
 import ClassicLayout from "./components/layouts/classic";
 import EnterPriseLayout from "./components/layouts/enterprise";
+import { usePathname } from "next/navigation";
+import { cookies } from "next/headers";
 
 export default function RootLayout({
   children,
@@ -17,33 +20,70 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [layout, setLayout] = useState<
-    "empty" | "dense" | "classic" | "enterprise"
-  >("empty");
+    "empty" | "dense" | "classic" | "enterprise" | "site"
+  >("site");
 
   const switchLayout = (
-    layout: "empty" | "dense" | "classic" | "enterprise"
+    layout: "empty" | "dense" | "classic" | "enterprise" | "site"
   ) => {
     setLayout(layout);
   };
-  let LayoutComponent = EmptyLayout;
+  let AppLayoutComponent = EmptyLayout;
   switch (layout) {
     case "dense": {
-      LayoutComponent = DenseLayout;
+      AppLayoutComponent = DenseLayout;
       break;
     }
     case "classic": {
-      LayoutComponent = ClassicLayout;
+      AppLayoutComponent = ClassicLayout;
       break;
     }
     case "enterprise": {
-      LayoutComponent = EnterPriseLayout;
+      AppLayoutComponent = EnterPriseLayout;
+      break;
+    }
+    case "site": {
+      AppLayoutComponent = SiteLayout;
       break;
     }
     default: {
-      LayoutComponent = EmptyLayout;
+      AppLayoutComponent = SiteLayout;
       break;
     }
   }
+  const pathname = usePathname();
+  const [userRole, setUserRole] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Simulate fetching user role from an API
+        async function fetchUserRole() {
+            // const response = await fetch('/services/user-role');
+            // const data = await response.json();
+            setUserRole('admin'); // Example roles: 'admin', 'guest'
+        }
+
+        fetchUserRole();
+    }, []);
+
+    if (!userRole) {
+        return <p>Loading...</p>; // Show loading state while fetching role
+    }
+    
+    if (pathname.startsWith('/admin')) {
+      if (userRole !== 'admin') {
+          return <p>Access denied. Admins only.</p>;
+      }
+      // debugger;
+      AppLayoutComponent = ClassicLayout;
+    }
+
+  
+    // const userRole = cookies().get('user-role')?.value || 'guest';
+
+    // if (userRole !== 'admin') {
+    //     return <p>Access Denied. Admins only.</p>;
+    // }
+
   // const LayoutComponent = layout === 'empty' ? EmptyLayout : DenseLayout;
 
   return (
@@ -63,7 +103,7 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
               <div className="app-root">
-                <LayoutComponent>{children}</LayoutComponent>
+                <AppLayoutComponent>{children}</AppLayoutComponent>
               </div>
             </ThemeProvider>
           </AppRouterCacheProvider>
