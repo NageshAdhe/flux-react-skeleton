@@ -1,9 +1,7 @@
 
 const EmptyLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    return (
-      <div>       
-        <main>{children}</main>
-      </div>
+    return (           
+        <main className="layout-empty">{children}</main>
     );
   };
   

@@ -73,8 +73,10 @@ export default function RootLayout({
       if (userRole !== 'admin') {
           return <p>Access denied. Admins only.</p>;
       }
-      // debugger;
       AppLayoutComponent = ClassicLayout;
+    }
+    if (pathname.startsWith('/auth')) {  
+      AppLayoutComponent = EmptyLayout;
     }
 
   

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // const { Mode } = require('@mui/icons-material');
 // const { theme } = require('@mui/material/styles');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   // purge: [],
@@ -25,19 +26,51 @@ module.exports = {
       print: { raw: "print" },
     },
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
+      emerald: colors.emerald,
+      indigo: colors.indigo,
+      yellow: colors.yellow, 
+      primary: {
+        50: '#eff6ff',
+        100: '#dbeafe',
+        200: '#bfdbfe',
+        300: '#93c5fd',
+        400: '#60a5fa',
+        500: '#3b82f6', // blue-500 as the primary color
+        600: '#2563eb',
+        700: '#1d4ed8',
+        800: '#1e40af',
+        900: '#1e3a8a',
+      },
       // Define base theme colors
       default: {
         primary: "#6366f1",
         secondary: "#a855f7",
       },
       brand: { 
-		primary: "#3b82f6",
-		 secondary: "#0ea5e9"
+        primary: "#3b82f6",
+        secondary: "#0ea5e9"
 		 },
-      teal: { primary: "#14b8a6", secondary: "#0d9488" },
-      rose: { primary: "#f43f5e", secondary: "#db2777" },
-      purple: { primary: "#8b5cf6", secondary: "#7c3aed" },
-      amber: { primary: "#f59e0b", secondary: "#f97316" },
+      teal: { 
+        primary: "#14b8a6", 
+        secondary: "#0d9488" 
+      },
+      rose: { 
+        primary: "#f43f5e", 
+        secondary: "#db2777" 
+      },
+      purple: { 
+        primary: "#8b5cf6", 
+        secondary: "#7c3aed" 
+      },
+      amber: { 
+        primary: "#f59e0b",
+         secondary: "#f97316" 
+        },
     },
     // colors: {
     // 	transparent: 'transparent',

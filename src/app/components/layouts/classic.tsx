@@ -11,7 +11,7 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
       translate: "ANALYTICS",
       type: "link",
       icon: "link",
-      url: "/admin/analytics",
+      url: "/admin/analytics"
     },
     {
       id: "applications",
@@ -35,8 +35,8 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
           type: "link",
           icon: "whatshot",
           url: "/messenger",
-        },
-      ],
+        }
+      ]
     },
     {
       id: "ecommerce",
@@ -51,7 +51,7 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
           translate: "PRODUCT",
           type: "link",
           icon: "whatshot",
-          url: "/academy",
+          url: "/academy"
         },
         {
           id: "productDetails",
@@ -59,9 +59,9 @@ const ClassicLayout: React.FC<{ children: React.ReactNode }> = ({
           translate: "PRODUCT DETAILS",
           type: "link",
           icon: "whatshot",
-          url: "/messenger",
+          url: "/messenger"
         },
-      ],
+      ]
     },
   ];
   return (
